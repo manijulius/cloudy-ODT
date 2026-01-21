@@ -1,0 +1,145 @@
+!Namelist for microphysics module
+
+&domain_params
+
+  !width or other two dimension of the domain ; or Kolmogorov scale in meters
+  width_dom       = 0.001,
+  
+  !fraction of domain cross-section area (fraction of eta^2)
+  area_frac       = 0.5,
+
+/
+
+&microphy_params
+  !maximum particle in the domain for array allocation
+  !typical value 1000 
+  max_prtcl_dom        = 20000,
+
+  !maximum particle in a grid cell
+  max_prtcl_gcell      = 100,
+  
+  !*************** Adding particle to the domain
+  !1 -> mono disperse particle size; 2 -> Gamma function based particle size distribution; 
+  !3 -> particle size distribution from file 
+  add_prtcl_mthd      = 1,
+
+  !number of bins in particle size distribution used in method 2(gamma dis) and 3 (read from file)
+  nbins_prtcl_dis     = 49,
+
+  !injection start time (non-dim)
+  ! should be greater than non-dim time of 0.1d-3 to allow for turbulence spin-up
+  !else time step is large and produces numerical error in particle grrowth code
+  inject_stime         = 0.1d-3,
+  
+  !injection end time (non-dim)
+  !ignored if injection is one-time only
+  !set to very large value, if it needs to end at end of simulation
+  inject_etime         = 1.0E12,
+
+  !inject one time (1) or continuously (0)
+  inject_onetime       = 0,
+ 
+  !=== For onetime injection
+  !number of  droplets for  one time injection
+  !ignored if injection is continuous
+  !set value to 8.0E6,  for one or two droplets in the injection frac_vol = 0.2
+  !set value to 4.0E7, for 8  droplets in the injection frac_vol = 0.2
+  !set value to 4.0E8, for 80 droplets in the injection frac_vol = 0.2 
+  n_prtcl_uvol_onetime = 4.0E8,
+
+  !==== For continuous injection
+  !ignored if injection is one-time only
+  !If vol_dom = 1e-6, then 1E6 is 1 particle /cm^3/sec = 60 droplets/cm^3/min
+  !*****simulation:
+  !set value to 1.0E6, 3.0E6, 10.0E6 for 60,180, 600 per cm^3 per min injection rate
+  !****testing  
+  !set value to 10.0E6 and frac_vol = 1.0 for testing (Nt = 5,000,000 i.e ~12.5 seconds) 
+  !12.5 secs * 10 particles per cm3 (= 125 particles)
+  n_prtcl_uvol_utime   = 10.0E6,
+
+  !frequency of injection, expressed as every nth diffusion interval
+  !ignored if injection is one-time only
+  inject_n_tdiff       = 1,
+
+  !inject blob with ccn/particle blob at random location in the domain 
+  !1-> true 0-> false 
+  !if false it will added at the domain center
+  is_add_prtcl_rand    = 0,
+  
+  !if add_prtcl_rand_pos = 1 then this parameter value is ignored
+  !if add_prtcl_rand_pos = 0 then droplets are added at this position
+  !0.5 is center of the domain
+  !position should be > 0+ add_prtcl_frac_domvol and < 1-add_prtcl_frac_domvol
+  inject_at            = 0.5,
+
+  !injection blob vol as fraction of domain volume 
+  inject_vol           = 1.0,
+
+  !**************** for add_prtcl_mthd =1  else ignored
+  !solute mass in kg
+  !model intercomparison value 2.212e-18 for Nacl (diameter = 125 nm)
+  !m0_solute           = 1.0E-18,
+  m0_aero              = 2.212E-18,
+ 
+  !particle radius in meters
+  !r0_prtcl            = 0.2E-06,
+  !r0_prtcl            = 0.0625E-06,
+  !r0_prtcl            = 0.147E-06
+  r0_prtcl             = 0.0630E-06,
+  !r0_prtcl             = 1.0E-06,
+  !**************** for add_prtcl_mthd =2  else ignored
+  !liquid water content kg m^-3
+  lwc0_prtcl_sum       = 1.51731E-5,
+  
+  !**************** for add_prtcl_mthd =3  else ignored
+  dis_prtcl_file       = "dis_prtcl.dat",
+  
+  !**************** instrument limit
+  !Minimum particle size that an instrument can measure
+  r_min_instru         = 1.5E-06,
+
+  !**************** aerosol
+  !1-> NaCl,  2-> (NH4)2(SO4) 3-> (NH4)HSO4
+  aero_type            = 1,
+  
+  !include curvature and solute effects in the particle growth
+  ! 1 -> yes, 0 -> no
+  has_curv_sol_eff  = 1,
+
+
+  !**************** particle settling *****************
+  term_vel_factor       = 1.0,
+
+  !************** store pdf and prof ****************
+  do_rec_pdf_n_prof     = 1,
+
+  !start recording of scalars and particles profiles and pdf
+  rec_stime_pdf_n_prof  = 0.0,
+
+  !end recording 
+  !set to very large value, if it needs to end at end of simulation
+  rec_etime_pdf_n_prof  = 1.0E12,
+  
+  !************** rec particle history ****************
+  do_rec_prtcl_hist     = 1,
+
+  !number of records to save before writing to file (used in mem alloc)
+  !Since I plan to write particle history every ~10 seconds  with sample frequency of 1 hz
+  !max len  = ~10 * max_prt_dom
+  max_prtcl_hist  = 300000, 
+
+  !start recording of particle hist (secs)
+  rec_stime_prtcl_hist  = 3000.0,
+
+  !end recording in seconds
+  !set to very large value, if it needs to end at end of simulation
+  rec_etime_prtcl_hist  = 1.0E12,
+  
+  !sample and write every nth second
+  rec_intvl_prtcl_hist  = 1,
+
+  !write to file every nth second 
+  !If buffer is full before this intvl, the program will write data to the file
+  write_intvl_prtcl_hist  = 30,
+   
+/
