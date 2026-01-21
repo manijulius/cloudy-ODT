@@ -15,7 +15,7 @@ This cloudy ODT implementation lacks side walls and therefore doesn't account fo
 * **Mani Rajagopal and Steve Krueger** implemented the aerosol injection and warm-cloud microphysical processes over moist-ODT code.
 
 # References
-Su, C. W., Krueger, S. K., McMurtry, P. A., & Austin, P. H. (1998). Linear eddy modeling of droplet spectral evolution during entrainment and mixing in cumulus clouds. Atmospheric research, 47, 41-58.
-Krueger, S. K., Su, C. W., & McMurtry, P. A. (1997). Modeling entrainment and finescale mixing in cumulus clouds. Journal of the atmospheric sciences, 54(23), 2697-2712.
-Rajagopal 2024. cloudy ODT documentation v1.0 
+* Su, C. W., Krueger, S. K., McMurtry, P. A., & Austin, P. H. (1998). Linear eddy modeling of droplet spectral evolution during entrainment and mixing in cumulus clouds. Atmospheric research, 47, 41-58.
+* Krueger, S. K., Su, C. W., & McMurtry, P. A. (1997). Modeling entrainment and finescale mixing in cumulus clouds. Journal of the atmospheric sciences, 54(23), 2697-2712.
+* Rajagopal 2024. cloudy ODT documentation v1.0 [here](https://github.com/manijulius/cloudy-ODT/blob/main/cloudy_ODT_documentation.pdf)
 
