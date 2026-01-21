@@ -12,10 +12,10 @@ In addition to the implementation of the above processes, various statistical ou
 This cloudy ODT implementation lacks side walls and therefore doesn't account for the effects of sidewall boundary conditions (temperature and moisture flux). However, it is useful to simulate a cloud chamber with an adiabatic sidewall.  The microphysical processes are based on the cloud Linear Eddy Model (LEM; Su et al  1998) and Explicit Mixing Parcel Model (EMPM; Krueger et al 1997)
 
 # Contributions
-* **Mani Rajagopal and Steve Krueger** implemented the aerosol injection and warm-cloud microphysical processes over moist-ODT code.
+* **Mani Rajagopal and Steve Krueger** implemented the aerosol injection and warm-cloud microphysical processes to the moist-ODT code.
 
 # References
-* Su, C. W., Krueger, S. K., McMurtry, P. A., & Austin, P. H. (1998). Linear eddy modeling of droplet spectral evolution during entrainment and mixing in cumulus clouds. Atmospheric research, 47, 41-58.
 * Krueger, S. K., Su, C. W., & McMurtry, P. A. (1997). Modeling entrainment and finescale mixing in cumulus clouds. Journal of the atmospheric sciences, 54(23), 2697-2712.
+* Su, C. W., Krueger, S. K., McMurtry, P. A., & Austin, P. H. (1998). Linear eddy modeling of droplet spectral evolution during entrainment and mixing in cumulus clouds. Atmospheric research, 47, 41-58.
 * Rajagopal 2024. cloudy ODT documentation v1.0 [here](https://github.com/manijulius/cloudy-ODT/blob/main/cloudy_ODT_documentation.pdf)
 
